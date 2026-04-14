@@ -1,0 +1,18 @@
+[project]
+name = "cwm-workflow-apps"
+version = "0.1.0"
+description = "MCP apps for CWM workflows: input form, job progress, and output UI"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "fastmcp[apps]>=3.0",
+    "prefab-ui>=0.8.0,<0.9",
+    "httpx>=0.28.0",
+]
+
+[project.scripts]
+cwm-workflow-apps = "cwm_workflow_apps.server:main"
+cwm-workflow-status-ui = "cwm_workflow_apps.status_ui:cli"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
