@@ -61,7 +61,7 @@ cd ..
 
 ## Run the bridge
 
-The bridge defaults to **`--port 9092`** if you omit `--port` (see `mcp_http_bridge.py`). The commands below use **9093** so they align with **`CWM_BRIDGE_URL`** / **`examples/cursor-mcp.json`**.
+Default listen port is **9093** (`--port` overrides; matches **`CWM_BRIDGE_URL`** and **`examples/cursor-mcp.json`**).
 
 **With Prefab / workflow-app tools merged** (recommended for the full mopActivity demo surface):
 
@@ -71,13 +71,13 @@ export CWM_CAS_USERNAME="YOUR_USER"
 export CWM_CAS_PASSWORD="YOUR_PASSWORD"
 # optional: export CWM_SSO_EXTERNAL_PORT=30603
 
-python3 mcp_http_bridge.py --port 9093 --with-workflow-apps
+python3 mcp_http_bridge.py --with-workflow-apps
 ```
 
 **CWM-only** (no merged workflow-app tools):
 
 ```bash
-python3 mcp_http_bridge.py --port 9093
+python3 mcp_http_bridge.py
 ```
 
 Health check:

@@ -12,10 +12,10 @@ Usage:
     export CWM_CROSSWORK_BASE_URL=https://crosswork.example.com:443
     export CWM_CAS_USERNAME=...
     export CWM_CAS_PASSWORD=...
-    ./mcp_http_bridge.py [--port 9092] [--with-workflow-apps]
+    ./mcp_http_bridge.py [--port 9093] [--with-workflow-apps]
 
 Then configure MCP clients to connect to:
-    http://localhost:9092/crosswork/cwm/v2/mcp
+    http://localhost:9093/crosswork/cwm/v2/mcp
 
 Token is auto-refreshed on startup and whenever a 401 is received.
 """
@@ -762,7 +762,7 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
 def main():
     global _bridge_mcp_url, _workflow_apps_proc
     parser = argparse.ArgumentParser(description="HTTP bridge proxy for Crosswork MCP server")
-    parser.add_argument('--port', type=int, default=9092, help='Port to listen on (default: 9092)')
+    parser.add_argument('--port', type=int, default=9093, help='Port to listen on (default: 9093)')
     parser.add_argument(
         '--host',
         type=str,

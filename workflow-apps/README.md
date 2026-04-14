@@ -46,9 +46,9 @@ Use the **CWM remote MCP bridge with workflow-apps** so all workflow-app tools a
 
 - Bridge running **with** workflow-apps:
   ```bash
-  python3 mcp_http_bridge.py --port 9092 --with-workflow-apps
+  python3 mcp_http_bridge.py --port 9093 --with-workflow-apps
   ```
-- In Cursor: MCP server **cwm-remote-mcp-bridge** points to `http://localhost:9092/crosswork/cwm/v2/mcp`.
+- In Cursor: MCP server **cwm-remote-mcp-bridge** points to `http://localhost:9093/crosswork/cwm/v2/mcp`.
 
 ### 2. Test from Cursor (recommended)
 
@@ -75,7 +75,7 @@ You should see status (running/completed/failed), duration, and a short result m
 **Start a job and get status**
 
 ```bash
-curl -s -X POST http://127.0.0.1:9092/crosswork/cwm/v2/mcp \
+curl -s -X POST http://127.0.0.1:9093/crosswork/cwm/v2/mcp \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
@@ -97,7 +97,7 @@ Save the `jobId` and `runId` from the response.
 
 ```bash
 # Replace JOB_ID and RUN_ID with the values from above
-curl -s -X POST http://127.0.0.1:9092/crosswork/cwm/v2/mcp \
+curl -s -X POST http://127.0.0.1:9093/crosswork/cwm/v2/mcp \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
@@ -133,7 +133,7 @@ If the CFS check form, **mopActivity workflow form**, or status view only show a
    In Cursor’s MCP settings you have both **cwm-remote-mcp-bridge** (HTTP) and **cwm-workflow-apps** (stdio). Some Cursor versions only render Prefab UI when the tool comes from a **stdio** MCP server.  
    - In the chat/Composer where you want the form, select the **cwm-workflow-apps** server (not the bridge).  
    - Run **mop_activity_workflow_form** (no arguments). The form may then render.  
-   - Keep the **bridge** running with `--with-workflow-apps` and set **CWM_MCP_URL** for the stdio server (e.g. `http://127.0.0.1:9092/crosswork/cwm/v2/mcp`) so workflow-apps can call CWM via the bridge.
+   - Keep the **bridge** running with `--with-workflow-apps` and set **CWM_MCP_URL** for the stdio server (e.g. `http://127.0.0.1:9093/crosswork/cwm/v2/mcp`) so workflow-apps can call CWM via the bridge.
 
 3. **Reconnect MCP after restarting the bridge**  
    After starting or restarting the bridge, disconnect and reconnect the MCP server in Cursor (or restart Cursor) so it refetches `tools/list` and `resources/list`. Otherwise Cursor may use a cached list that doesn’t include the Prefab renderer.
@@ -164,13 +164,13 @@ Cursor only shows the text part of tool results, not the Prefab form/status UI. 
 
 1. **Start the MCP bridge** with workflow-apps (so job data can be fetched):
    ```bash
-   python3 mcp_http_bridge.py --port 9092 --with-workflow-apps
+   python3 mcp_http_bridge.py --port 9093 --with-workflow-apps
    ```
 
 2. **Start the status UI server** from the `cwm-workflow-apps` directory:
    ```bash
    cd cwm-workflow-apps
-   CWM_MCP_URL=http://127.0.0.1:9092/crosswork/cwm/v2/mcp uv run cwm-workflow-status-ui
+   CWM_MCP_URL=http://127.0.0.1:9093/crosswork/cwm/v2/mcp uv run cwm-workflow-status-ui
    ```
    If port 8765 is already in use (`Address already in use`), either free it or pick another port:
    - **Use another port:** `uv run cwm-workflow-status-ui --port 8766` (then open http://127.0.0.1:8766/)
