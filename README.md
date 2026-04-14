@@ -127,7 +127,3 @@ python3 scripts/run_job_from_input.py path/to/job.json
 - Treat **`CWM_CAS_PASSWORD`** as a secret: environment, OS keychain, or CI secret store — not git.
 - Default **`CWM_SSL_VERIFY=false`** disables TLS certificate verification (common in labs). Use **`true`** when you have proper PKI.
 - Review Crosswork RBAC for the CAS user you automate with.
-
-## License
-
-The upstream monorepo may apply its own license; if you publish **only** this folder as a new repo, add a `LICENSE` file consistent with your organization’s policy.
