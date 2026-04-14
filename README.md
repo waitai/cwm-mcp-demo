@@ -14,6 +14,9 @@ See the Cisco Community post [**From Copilot to MCP: Automating Crosswork Workfl
 | `workflow-apps/` | Bundled **cwm-workflow-apps** MCP stdio server (Prefab UI). When enabled, the bridge **merges** its three tools into `tools/list` and **proxies** `tools/call` / `resources/*` for those tools. |
 | `scripts/` | Optional **stdlib** helpers to call `post_workflow` and `post_job` through the bridge (same JSON-RPC as Cursor). |
 | `examples/cursor-mcp.json` | Minimal Cursor MCP snippet pointing at the bridge URL. |
+| `.cursor/mcp.json` | Example project **MCP server** entry for Cursor (bridge URL); adjust host/port to match your run. |
+| `.cursor/skills/cwm-mop-workflow-from-cli-sample/` | **Cursor Agent skill** (`SKILL.md`, `reference.md`): mopActivity workflow from CLI sample → deploy/test via bridge; see **Cursor skill: reference workflow**. |
+| `docs/` | **`cwm-mop-workflow-from-cli-sample-prompts-and-process.md`** — how the skill was developed, copy-paste prompts, artifact list. |
 
 ## Requirements
 
