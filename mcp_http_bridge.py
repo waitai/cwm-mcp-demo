@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HTTP bridge proxy for Crosswork MCP server.
+HTTP bridge proxy for the CWM MCP server.
 Runs a local HTTP server that forwards requests to the HTTPS MCP server,
 handling SSL verification, Bearer token authentication, and automatic
 token refresh transparently.
